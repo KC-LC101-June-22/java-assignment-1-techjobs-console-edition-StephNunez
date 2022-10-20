@@ -10,7 +10,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -52,7 +52,7 @@ public class TechJobs {
                     }
                 }
 
-            } else { // choice is "search"
+            } else if (actionChoice.equals("search"))  {
 
                 // How does the user want to search (e.g. by skill or employer)
                 String searchField = getUserSelection("Search by:", columnChoices);
@@ -112,7 +112,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -120,6 +120,15 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        for (HashMap<String,String> job: someJobs) {
+            System.out.print("\n*****\n");
+
+            for (Map.Entry<String, String> column : job.entrySet()) {
+                System.out.println(column.getKey() + ": " + column.getValue());
+            }//for-each
+
+            System.out.print("*****\n");
+
+        }//for
     }
 }
