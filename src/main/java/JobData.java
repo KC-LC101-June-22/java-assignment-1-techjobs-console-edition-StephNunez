@@ -93,30 +93,48 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
 
-    public static @Nullable ArrayList<HashMap<String, String>> findByValue(String value) {
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
         loadData();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        for (HashMap<String, String> row : allJobs) {
-
-        //System.out.println(row.keySet());
-
-            for (String key: row.keySet()){
-                String aValue = row.get(key);
-
-                    if (aValue.contains(value)){
-                    jobs.add(row);
+        for(int i = 0; i < allJobs.size(); i++){
+            for(Map.Entry<String, String> job : allJobs.get(i).entrySet()){
+                String toSearch = job.getValue().toUpperCase();
+                if(toSearch.contains(value.toUpperCase())){
+                    jobs.add(allJobs.get(i));
                     break;
                 }
             }
-
         }
-
-        return null;
+        return jobs;
     }
+//    public static @Nullable ArrayList<HashMap<String, String>> findByValue(String value) {
+//
+//        // load data, if not already loaded
+//        loadData();
+//
+//        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+//
+//        for (HashMap<String, String> row : allJobs) {
+//
+//        //System.out.println(row.keySet());
+//
+//            for (String key: row.keySet()){
+//                String aValue = (row.get(key)).toLowerCase();
+//                String v = value.toLowerCase();
+//
+//                    if (aValue.contains(v)){
+//                    jobs.add(row);
+//                    break;
+//                }
+//            }
+//
+//        }
+//        return jobs;
+//    }
 
     /**
      * Read in data from a CSV file and store it in a list
