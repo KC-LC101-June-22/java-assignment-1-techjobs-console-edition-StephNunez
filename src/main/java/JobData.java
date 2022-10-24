@@ -1,6 +1,7 @@
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.FileReader;
@@ -103,6 +104,7 @@ public class JobData {
         for(int i = 0; i < allJobs.size(); i++){
             for(Map.Entry<String, String> job : allJobs.get(i).entrySet()){
                 String toSearch = job.getValue().toUpperCase();
+                System.out.println(toSearch);
                 if(toSearch.contains(value.toUpperCase())){
                     jobs.add(allJobs.get(i));
                     break;
@@ -125,6 +127,7 @@ public class JobData {
 //            for (String key: row.keySet()){
 //                String aValue = (row.get(key)).toLowerCase();
 //                String v = value.toLowerCase();
+//                System.out.println(aValue);
 //
 //                    if (aValue.contains(v)){
 //                    jobs.add(row);
@@ -135,6 +138,7 @@ public class JobData {
 //        }
 //        return jobs;
 //    }
+//
 
     /**
      * Read in data from a CSV file and store it in a list
