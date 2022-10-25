@@ -77,9 +77,9 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toUpperCase();
 
-            if (aValue.contains(value)) {
+            if (aValue.contains(value.toUpperCase())) {
                 jobs.add(row);
             }
         }
@@ -104,7 +104,6 @@ public class JobData {
         for(int i = 0; i < allJobs.size(); i++){
             for(Map.Entry<String, String> job : allJobs.get(i).entrySet()){
                 String toSearch = job.getValue().toUpperCase();
-                System.out.println(toSearch);
                 if(toSearch.contains(value.toUpperCase())){
                     jobs.add(allJobs.get(i));
                     break;
